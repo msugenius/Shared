@@ -1,0 +1,40 @@
+using System;
+using System.Collections.Generic;
+ 
+public class Program
+{
+    public static void Main()
+    {
+        Console.ForegroundColor = ConsoleColor.White;
+        string[] str = new string[5]; // Инициализирум массив и заполняем содержимым списка
+        str[0] = "Фурион, фурион, фурион";
+        str[1] = "По фарму чемпион";
+        str[2] = "Быстрее всех голду зарабатывает он";
+        str[3] = "Лучший фармила в доте это";
+        str[4] = "Нэйчерс профит";
+        string[] stss = new string[1000]; // Создаем новый массив для другого списка
+
+        LinkedList<string> mem = new LinkedList<string>(); // Создаем первый список
+
+        Console.WriteLine("Допустим первый список \n");
+        Console.ForegroundColor = ConsoleColor.Yellow;
+        for (int i = 0; i < str.Length; i++) {mem.AddLast(str[i]);} // Заполняем список из массива (можно так и не делать)
+        foreach (var c in mem) {Console.WriteLine(c);} // Простейший способ вывести список
+        Console.ForegroundColor = ConsoleColor.White;
+
+        Console.WriteLine("\n Хвала кочерге!: \n");
+
+        LinkedList<string> iShto = new LinkedList<string>(); // Создаем второй список
+
+        for (int i = 0; i < mem.Count; i++) // Стартуем цикл
+        {
+            mem.CopyTo(stss, i); // Копируем строку из списка а в список b
+            mem.RemoveFirst(); // Удаляем уже скопированный элемент
+        }
+        for (int i = 0; i < str.Length; i++) { iShto.AddLast(stss[i]); } // Добавляем в новый список элементы второго массива
+        Console.ForegroundColor = ConsoleColor.Yellow;
+        foreach (var c in iShto) { Console.WriteLine(c); } // Выводим новый список
+        Console.ReadKey();
+
+    }
+}
